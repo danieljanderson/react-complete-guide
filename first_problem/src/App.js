@@ -10,7 +10,25 @@ class App extends Component {
       userName: newUsername,
     });
   }
+  changeUsernameHandler = () => {
+    this.setState({
+      userInput: [{ userName: 'nogoodName8' }],
+    });
+  };
+  addUsernameHandler = (event) => {
+    this.setState({
+      userInput: [{ userName: event.target.value }],
+    });
+  };
+
   render() {
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+    };
     return (
       <div className="App">
         <ol>
@@ -32,28 +50,30 @@ class App extends Component {
             username to the UserOutput component
           </li>
           <li>
-            Add a method to manipulate the state (=> an event-handler method)
+            DONE Add a method to manipulate the state (=> an event-handler
+            method)
           </li>
           <li>
-            Pass the event-handler method reference to the UserInput component
-            and bind it to the input-change event
+            DONE Pass the event-handler method reference to the UserInput
+            component and bind it to the input-change event
           </li>
           <li>
-            Ensure that the new input entered by the user overwrites the old
-            username passed to UserOutput
+            DONE Ensure that the new input entered by the user overwrites the
+            old username passed to UserOutput
           </li>
           <li>
-            Add two-way-binding to your input (in UserInput) to also display the
-            starting username
+            DONE Add two-way-binding to your input (in UserInput) to also
+            display the starting username
           </li>
           <li>
-            Add styling of your choice to your components/ elements in the
+            DONE Add styling of your choice to your components/ elements in the
             components - both with inline styles and stylesheets
           </li>
         </ol>
         <UserInput
           info="this username was hard coded"
           userName="nogoodname"
+          changed={this.addUsernameHandler}
         ></UserInput>
         <UserOutput
           paragraph="this is a test and only a test"
@@ -64,6 +84,9 @@ class App extends Component {
           paragraph="this is so cool that I am able to do this"
           paragraph2="I wish I knew the whole syntex by heart but I dont"
         ></UserOutput>
+        <button style={style} onClick={this.changeUsernameHandler}>
+          change Username
+        </button>
       </div>
     );
   }
