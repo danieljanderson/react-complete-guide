@@ -74,6 +74,7 @@ class App extends Component {
           info="this username was hard coded"
           userName="nogoodname"
           changed={this.addUsernameHandler}
+          currentUser={this.state.userInput[0].userName}
         ></UserInput>
         <UserOutput
           paragraph="this is a test and only a test"
